@@ -8,12 +8,15 @@ import { Olympic } from '../core/models/Olympic';
   styleUrls: ['./mychart.component.scss']
 })
 export class MychartComponent implements OnInit {
+  
+
+
 
   constructor(private olympicService: OlympicService) { }
    public olympics!: Olympic[];
 
 
-  ngOnInit(): void {
+  ngOnInit(){
    
 
     this.olympicService.getOlympics().subscribe(response => {
