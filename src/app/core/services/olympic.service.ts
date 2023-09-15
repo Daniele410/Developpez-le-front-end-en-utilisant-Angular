@@ -17,9 +17,9 @@ export class OlympicService {
       tap((value) => this.olympics$.next(value)),
       catchError((error, caught) => {
         // TODO: improve error handling
-        console.error(error);
+        console.error("Error loading Olympic data:",error);
         // can be useful to end loading state and let the user know something went wrong
-        this.olympics$.next(null);
+        this.olympics$.next({error:'Error loading Olympic data. Try later.'});
         return caught;
       })
     );
