@@ -10,33 +10,31 @@ import Chart from 'chart.js/auto';
 })
 export class MychartComponent implements OnInit {
  
-
   
 
   constructor(private olympicService: OlympicService) { }
    public olympics!: Olympic[];
+
+  
+   
    public chart: any;
    createChart(){
+    
   
     this.chart = new Chart("MyChart", {
       type: 'pie', //this denotes tha type of chart
-
+     /*  this.olympics.flatMap(row => row.country ), */
       data: {// values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-								 '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ], 
+        labels: [this.olympics[0].country, this.olympics[1].country, this.olympics[2].country,this.olympics[3].country,
+        this.olympics[4].country ], 
 	       datasets: [
           {
-            label: "Sales",
-            data: ['467','576', '572', '79', '92',
-								 '574', '573', '576'],
-            backgroundColor: 'blue'
+            label: "medalCount",
+            data: ['500','400', '200', '140', '130',
+								 ],
+            backgroundColor:  ['Green', 'Orange', 'Yellow', 'Red', 'Blue'],
           },
-          {
-            label: "Profit",
-            data: ['542', '542', '536', '327', '17',
-									 '0.00', '538', '541'],
-            backgroundColor: 'limegreen'
-          }  
+          
         ]
       },
       options: {
@@ -56,8 +54,16 @@ export class MychartComponent implements OnInit {
       this.olympics = response;
 
       this.createChart();
+
+
     })
-    
+    /* this.olympicService.getOlympicByCountry("Tokyo").subscribe(response=> {
+      console.log(response)
+      
+    }) */
+
   }
+
+  
 
 }
