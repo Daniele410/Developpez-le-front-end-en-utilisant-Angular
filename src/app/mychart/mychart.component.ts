@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OlympicService } from '../core/services/olympic.service';
 import { Olympic } from '../core/models/Olympic';
-import { Partecipation } from '../core/models/Partecipation';
-import Chart from 'chart.js/auto';
+import { Participation } from '../core/models/Participation';
+import Chart, { ChartEvent } from 'chart.js/auto';
 
 
 @Component({
@@ -22,7 +22,6 @@ export class MychartComponent implements OnInit {
 
   public chart: any;
   createChart() {
-    this.olympics.map(row => row.country);
 
     const labels = this.olympics.map(countryData => countryData.country);
     const data = this.olympics.map(countryData => {
@@ -32,24 +31,38 @@ export class MychartComponent implements OnInit {
 
     this.chart = new Chart("MyChart", {
       type: 'pie', //this denotes tha type of chart
-      /*  this.olympics.flatMap(row => row.country ), */
-      data: {// values on X-Axis
-        labels: labels/* [this.olympics[0].country, this.olympics[1].country, this.olympics[2].country,this.olympics[3].country,
+
+      data: {
+        labels /* [this.olympics[0].country, this.olympics[1].country, this.olympics[2].country,this.olympics[3].country,
         this.olympics[4].country ] */,
         datasets: [
           {
             label: "Medal Count",
-            data: data,
-            backgroundColor: ['Green', 'Red', 'Orange', 'Yellow', 'Blue'],
+            data,
+            /* backgroundColor: ['Green', 'Red', 'Orange', 'Yellow', 'Blue'], */
           },
 
         ]
       },
       options: {
-        aspectRatio: 2.5,
+        /* aspectRatio: 2.5, */
         responsive: true,
-      }
+        maintainAspectRatio: false,
 
+        onClick: (event: ChartEvent, elements: any[]) => {
+          const nativeEvent = event.native as MouseEvent;
+          if (elements.length > 0) {
+            const clickedElementIndex = elements[0].index;
+            /*  const clickedLabel = labeldata[clickedElementIndex];
+             const clickedMedal = this.medaldata[clickedElementIndex];
+             const clickedValue = realdata[clickedElementIndex]; */
+
+            console.log(elements[0])
+            console.log(labels[elements[0].index])
+
+          }
+        }
+      }
     });
   }
 

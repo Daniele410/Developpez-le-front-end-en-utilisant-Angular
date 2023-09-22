@@ -7,9 +7,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 import { MychartComponent } from './mychart/mychart.component';
+import { MychartCountryComponent } from './mychart-country/mychart-country.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent, MychartComponent],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent, MychartComponent, MychartCountryComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

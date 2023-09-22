@@ -1,4 +1,16 @@
 // TODO: create here a typescript interface for a participation
+export interface Participation {
+
+    id: number,
+    year: number,
+    city: string,
+    medalsCount: number,
+    athleteCount: number
+
+
+}
+
+
 /*
 example of participation:
 {
@@ -9,13 +21,3 @@ example of participation:
     athleteCount: 372
 }
 */
-export interface Partecipation {
-
-    id: number,
-    year: number,
-    city: string,
-    medalsCount: number,
-    athleteCount: number
-
-
-}
