@@ -1,3 +1,24 @@
-h2{
+/* h1{
     text-align: center;
+    background-color: aquamarine;
+    background-size: auto;
+} */
+header{
+    text-align: center;
+    background-color: #c5ecf8;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+a{
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+.active{
+    color: #665;
+    text-decoration: underline;
 }

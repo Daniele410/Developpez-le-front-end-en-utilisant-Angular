@@ -8,6 +8,7 @@ import { Olympic } from '../models/Olympic';
   providedIn: 'root',
 })
 export class OlympicService {
+ 
   private olympicUrl = './assets/mock/olympic.json';
   private olympics$ = new BehaviorSubject<any>(undefined);
 
@@ -31,10 +32,13 @@ export class OlympicService {
     return this.olympics$.asObservable();
   }
 
-  /* getOlympicByCountry(countryName: string): Observable<Olympic | undefined> {
+  getDataForCountry(countryName: string): Observable<Olympic | undefined> {
     return this.olympics$.asObservable().pipe(
-      map((olympics) => olympics.find((olympic: Olympic) => olympic.country === countryName)
-      )
+      map(olympics => {
+        return olympics.find((country: Olympic) => country.country === countryName);
+      })
     );
-  } */
+  }
+
+ 
 }

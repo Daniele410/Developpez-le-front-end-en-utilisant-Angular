@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OlympicService } from '../core/services/olympic.service';
 import { Olympic } from '../core/models/Olympic';
-import { Participation } from '../core/models/Participation';
 import Chart, { ChartEvent } from 'chart.js/auto';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,10 +11,11 @@ import Chart, { ChartEvent } from 'chart.js/auto';
   styleUrls: ['./mychart.component.scss']
 })
 export class MychartComponent implements OnInit {
+  
 
+  
 
-
-  constructor(private olympicService: OlympicService) { }
+  constructor(private olympicService: OlympicService, private router: Router ) { }
   public olympics!: Olympic[];
 
 
@@ -45,24 +46,19 @@ export class MychartComponent implements OnInit {
         ]
       },
       options: {
-        /* aspectRatio: 2.5, */
+        
         responsive: true,
         maintainAspectRatio: false,
 
         onClick: (event: ChartEvent, elements: any[]) => {
-          const nativeEvent = event.native as MouseEvent;
           if (elements.length > 0) {
             const clickedElementIndex = elements[0].index;
-            /*  const clickedLabel = labeldata[clickedElementIndex];
-             const clickedMedal = this.medaldata[clickedElementIndex];
-             const clickedValue = realdata[clickedElementIndex]; */
-
-            console.log(elements[0])
-            console.log(labels[elements[0].index])
-
+            const clickedLabel = labels[clickedElementIndex];
+            this.router.navigate(['mychartcountry', clickedLabel]);
           }
         }
       }
+      
     });
   }
 
