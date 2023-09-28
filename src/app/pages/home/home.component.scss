@@ -1,19 +1,45 @@
-header{
+header {
     text-align: center;
     background-color: #c5ecf8;
     margin-bottom: 20px;
     padding: 10px;
 }
-a{
+
+a {
     margin: 0 10px;
     color: #333;
     text-decoration: none;
-    &:hover{
-        text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.active {
+    color: #665;
+    text-decoration: underline;
+}
+
+/* Pour les écrans à partir de 600px jusqu'à 900px */
+@media (min-width: 600px) and (max-width: 900px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    a {
+        margin: 0 15px;
+        font-size: 1.1em;
     }
 }
 
-.active{
-    color: #665;
-    text-decoration: underline;
+/* Pour les écrans de plus de 900px */
+@media (min-width: 900px) {
+    header {
+        padding: 20px 30px;
+    }
+
+    a {
+        margin: 0 20px;
+        font-size: 1.2em;
+    }
 }

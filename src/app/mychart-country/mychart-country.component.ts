@@ -24,7 +24,7 @@ export class MychartCountryComponent implements OnInit {
   constructor(private olympicService: OlympicService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.countryName = params['country'];
-  });
+    });
   }
 
 
@@ -36,28 +36,28 @@ export class MychartCountryComponent implements OnInit {
     const data = this.olympics[0].participations.map(participation => participation.medalsCount);
 
     this.chart = new Chart("MyChart", {
-        type: 'line', // Vous pouvez également choisir 'bar' si vous le préférez.
-        data: {
-            labels,
-            datasets: [{
-                label: "Nombre de médailles",
-                data,
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+      type: 'line', // Vous pouvez également choisir 'bar' si vous le préférez.
+      data: {
+        labels,
+        datasets: [{
+          label: "Nombre de médailles",
+          data,
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
+      }
     });
-}
+  }
 
 
 
@@ -67,18 +67,18 @@ export class MychartCountryComponent implements OnInit {
 
     this.olympicService.getDataForCountry(this.countryName).subscribe(data => {
       if (data) {
-          this.olympics = [data];
-  
-          if (this.olympics && this.olympics.length) {
-              const countryData = this.olympics[0];
-              this.numberOfEntries = countryData.participations.length;
-              this.totalMedals = countryData.participations.reduce((sum, participation) => sum + participation.medalsCount, 0);
-              this.totalAthletes = countryData.participations.reduce((sum, participation) => sum + participation.athleteCount, 0);
-          }
-  
-          this.generateCountryChart();
+        this.olympics = [data];
+
+        if (this.olympics && this.olympics.length) {
+          const countryData = this.olympics[0];
+          this.numberOfEntries = countryData.participations.length;
+          this.totalMedals = countryData.participations.reduce((sum, participation) => sum + participation.medalsCount, 0);
+          this.totalAthletes = countryData.participations.reduce((sum, participation) => sum + participation.athleteCount, 0);
+        }
+
+        this.generateCountryChart();
       }
-  });
+    });
   }
 }
 

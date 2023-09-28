@@ -1,25 +1,17 @@
-.chart-container {
-
-    text-align: center;
-    width: 90%;
-    
-
-}
-
 body {
-    height: 100%;
     background-color: rgb(100, 240, 193);
     text-align: center;
-    padding: 8px;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     
     .details{
         display: flex;
-        /* text-align: center; */
+        
        
        gap: 16px;
     
@@ -33,6 +25,12 @@ body {
 
     }
 
+    .chart-container {
+        width: 80%; 
+        max-width: 800px; 
+        min-width: 300px; 
+    }
+
     h1{
        
         border: 1px solid blue;
@@ -43,5 +41,12 @@ body {
 
     
 
-}
+    
 
+}
+@media (max-width: 600px) {
+    .chart-container {
+        width: 95%;
+    }
+
+}
