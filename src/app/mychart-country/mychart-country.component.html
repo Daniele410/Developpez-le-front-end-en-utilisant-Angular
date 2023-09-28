@@ -1,8 +1,13 @@
-<p>mychart-country works! </p>
+<p>mychart-country works!{{olympics}} </p>
 
-<div class="chart-container">
-    <canvas id="MyChart"></canvas>
-    <a routerLink="/facesnaps">Back</a>
-</div>
+<body>
+    
+    <h1>Medal Count by Country</h1>
+    <div class="chart-container">
+        <canvas id="MyChart">{{ chart }}</canvas>
+    </div>
+</body>
+
+
 
  

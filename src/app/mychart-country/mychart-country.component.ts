@@ -11,16 +11,17 @@ import { Olympic } from '../core/models/Olympic';
 })
 export class MychartCountryComponent implements OnInit {
 
-  countryName!: string ;
-  public olympics!: Olympic[];
+  
   
 
   constructor(private olympicService: OlympicService,private route: ActivatedRoute) {
     
     this.route.params.subscribe(params => {
-      this.countryName = params['country']; // Assegna il nome del paese alla variabile di istanza
+      this.id = params['id']; // Assegna il nome del paese alla variabile di istanza
     });
   }
+  id!: string ;
+  public olympics!: Olympic[];
   
 
   public chart: any;
@@ -61,8 +62,8 @@ export class MychartCountryComponent implements OnInit {
 
   
   ngOnInit(): void {
-    if (this.countryName) {
-      this.olympicService.getDataForCountry(this.countryName).subscribe(data => {
+    if (this.id) {
+      this.olympicService.getDataForCountry(this.id).subscribe(data => {
         
         this.generateCountryChart(); // Chiama la funzione per generare il grafico
       });
