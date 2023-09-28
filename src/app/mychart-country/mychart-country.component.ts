@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Chart } from 'chart.js';
-import { OlympicService } from '../core/services/olympic.service';
 import { Olympic } from '../core/models/Olympic';
+import { OlympicService } from '../core/services/olympic.service';
 
 @Component({
   selector: 'app-mychart-country',
@@ -10,64 +10,77 @@ import { Olympic } from '../core/models/Olympic';
   styleUrls: ['./mychart-country.component.scss']
 })
 export class MychartCountryComponent implements OnInit {
-
-  
-  
-
-  constructor(private olympicService: OlympicService,private route: ActivatedRoute) {
-    
-    this.route.params.subscribe(params => {
-      this.id = params['id']; // Assegna il nome del paese alla variabile di istanza
-    });
-  }
-  id!: string ;
+  countryName!: string;
   public olympics!: Olympic[];
-  
-
   public chart: any;
-  
-  generateCountryChart() {
 
-    const labels = this.olympics.map(countryData => countryData.country);
-    const data = this.olympics.map(countryData => {
-      const totalMedals = countryData.participations.reduce((sum, participation) => sum + participation.medalsCount, 0);
-      return totalMedals;
-    });
+  numberOfEntries: number = 0;
+  totalMedals: number = 0;
+  totalAthletes: number = 0;
+
+
+
+
+  constructor(private olympicService: OlympicService, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      this.countryName = params['country'];
+  });
+  }
+
+
+  generateCountryChart() {
+    // Extraire les années de participation pour le pays.
+    const labels = this.olympics[0].participations.map(participation => `${participation.city} ${participation.year}`);
+
+    // Extraire le total des médailles pour chaque année de participation.
+    const data = this.olympics[0].participations.map(participation => participation.medalsCount);
 
     this.chart = new Chart("MyChart", {
-      type: 'line', //this denotes tha type of chart
-
-      data: {
-        labels /* [this.olympics[0].country, this.olympics[1].country, this.olympics[2].country,this.olympics[3].country,
-        this.olympics[4].country ] */,
-        datasets: [
-          {
-            label: "Medal Count",
-            data,
-            /* backgroundColor: ['Green', 'Red', 'Orange', 'Yellow', 'Blue'], */
-          },
-
-        ]
-      },
-      options: {
-        
-        responsive: true,
-        maintainAspectRatio: false,
-
-        
-      }
-      
+        type: 'line', // Vous pouvez également choisir 'bar' si vous le préférez.
+        data: {
+            labels,
+            datasets: [{
+                label: "Nombre de médailles",
+                data,
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     });
-  }
+}
 
-  
+
+
+
   ngOnInit(): void {
-    if (this.id) {
-      this.olympicService.getDataForCountry(this.id).subscribe(data => {
-        
-        this.generateCountryChart(); // Chiama la funzione per generare il grafico
-      });
-    }
+
+
+    this.olympicService.getDataForCountry(this.countryName).subscribe(data => {
+      if (data) {
+          this.olympics = [data];
+  
+          if (this.olympics && this.olympics.length) {
+              const countryData = this.olympics[0];
+              this.numberOfEntries = countryData.participations.length;
+              this.totalMedals = countryData.participations.reduce((sum, participation) => sum + participation.medalsCount, 0);
+              this.totalAthletes = countryData.participations.reduce((sum, participation) => sum + participation.athleteCount, 0);
+          }
+  
+          this.generateCountryChart();
+      }
+  });
   }
 }
-   
+
+
+

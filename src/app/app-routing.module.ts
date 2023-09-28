@@ -16,7 +16,7 @@ const routes: Routes = [
     path: '', component: MychartComponent
   },
   {
-    path: 'mychartcountry/:id',
+    path: 'mychartcountry/:country',
     component: MychartCountryComponent
   },
   {

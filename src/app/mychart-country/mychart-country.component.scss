@@ -1,6 +1,8 @@
-chart-container {
+.chart-container {
 
     text-align: center;
+    width: 90%;
+    
 
 }
 
@@ -8,4 +10,37 @@ body {
     background-color: rgb(100, 240, 193);
     text-align: center;
     padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+    .details{
+        display: flex;
+        /* text-align: center; */
+       
+       gap: 16px;
+    
+       p{
+        display: flex;
+        
+        border: 1px solid blue;
+        border-radius: 4px;
+        padding: 4px;
+       }
+
+    }
+
+    h1{
+       
+        border: 1px solid blue;
+        border-radius: 4px;
+        padding: 4px;
+        max-width: max-content;
+    }
+
+    
+
 }
+

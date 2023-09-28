@@ -40,5 +40,18 @@ export class OlympicService {
     );
   }
 
- 
+  
+getById(olympicId: number): Observable<Olympic | undefined> {
+  return this.olympics$.asObservable().pipe(
+    map(olympics => {
+      return olympics.find((olympic: Olympic) => olympic.id === olympicId);
+    })
+  );
 }
+
+
+
+  
+}
+
+ 
