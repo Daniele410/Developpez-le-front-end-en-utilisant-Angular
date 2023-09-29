@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(100, 240, 193);
+    background-color: rgb(123, 195, 229);
     text-align: center;
     margin: 0;
     padding: 0;
@@ -10,7 +10,7 @@ body {
 
     @media (max-width: 768px) {
 
-        background-color: rgb(100, 240, 193);
+        background-color: rgb(123, 195, 229);
         text-align: center;
         margin: 0;
         padding: 0;
@@ -19,7 +19,7 @@ body {
         align-items: center;
         justify-content: center;
 
-        flex-direction: column;
+        
 
         .chart-container {
             width: 80%;
@@ -40,7 +40,7 @@ h1 {
 }
 
 .chart-container {
-    width: 80%;
+    width: 100%;
     max-width: 800px;
     min-width: 300px;
 }
