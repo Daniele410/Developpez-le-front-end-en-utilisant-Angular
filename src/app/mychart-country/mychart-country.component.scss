@@ -8,42 +8,48 @@ body {
     align-items: center;
     justify-content: center;
 
-    
-    .details{
+
+    .details {
         display: flex;
-        
-       
-       gap: 16px;
-    
-       p{
-        display: flex;
-        
-        border: 1px solid blue;
-        border-radius: 4px;
-        padding: 4px;
-       }
+
+
+        gap: 16px;
+
+        p {
+            display: flex;
+
+            border: 1px solid blue;
+            border-radius: 4px;
+            padding: 4px;
+        }
+        @media (max-width: 768px) {
+            
+                flex-direction: column;
+            }
 
     }
 
     .chart-container {
-        width: 80%; 
-        max-width: 800px; 
-        min-width: 300px; 
+        width: 80%;
+        max-width: 800px;
+        min-width: 300px;
     }
 
-    h1{
-       
+    h1 {
+
         border: 1px solid blue;
         border-radius: 4px;
         padding: 4px;
         max-width: max-content;
+        /* background-color: rgb(239, 243, 242); */
     }
 
-    
 
-    
+
+
 
 }
+
 @media (max-width: 600px) {
     .chart-container {
         width: 95%;

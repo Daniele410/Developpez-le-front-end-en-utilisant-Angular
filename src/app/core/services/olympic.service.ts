@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, map, retry, tap } from 'rxjs/operators';
+import { catchError, delay, map, retry, tap } from 'rxjs/operators';
 import { Olympic } from '../models/Olympic';
 
 @Injectable({
@@ -32,7 +32,7 @@ export class OlympicService {
     return this.olympics$.asObservable();
   }
 
-  getDataForCountry(countryName: string): Observable<Olympic | undefined> {
+  getDataForCountry(countryName: string): Observable<Olympic > {
     return this.olympics$.asObservable().pipe(
       map(olympics => {
         return olympics.find((country: Olympic) => country.country === countryName);
@@ -41,7 +41,7 @@ export class OlympicService {
   }
 
   
-getById(olympicId: number): Observable<Olympic | undefined> {
+getById(olympicId: number): Observable<Olympic > {
   return this.olympics$.asObservable().pipe(
     map(olympics => {
       return olympics.find((olympic: Olympic) => olympic.id === olympicId);

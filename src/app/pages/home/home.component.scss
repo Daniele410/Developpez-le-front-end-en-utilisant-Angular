@@ -20,7 +20,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Pour les écrans à partir de 600px jusqu'à 900px */
 @media (min-width: 600px) and (max-width: 900px) {
     header {
         padding: 15px 20px;
@@ -32,7 +31,7 @@ a:hover {
     }
 }
 
-/* Pour les écrans de plus de 900px */
+
 @media (min-width: 900px) {
     header {
         padding: 20px 30px;

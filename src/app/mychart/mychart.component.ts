@@ -16,13 +16,14 @@
     
 
     constructor(private olympicService: OlympicService, private router: Router ) { }
-    public olympics!: Olympic[];
+    public olympics: Olympic[]=[];
     public chart: any;
     
     
     
+    
     createChart() {
-
+      
       const labels = this.olympics.map(countryData => countryData.country);
       const data = this.olympics.map(countryData => {
         const totalMedals = countryData.participations.reduce((sum, participation) => sum + participation.medalsCount, 0);
@@ -33,8 +34,7 @@
         type: 'pie', //this denotes tha type of chart
 
         data: {
-          labels /* [this.olympics[0].country, this.olympics[1].country, this.olympics[2].country,this.olympics[3].country,
-          this.olympics[4].country ] */,
+          labels ,
           datasets: [
             {
               label: "Medal Count",

@@ -35,7 +35,7 @@ export class MychartCountryComponent implements OnInit {
     // Extraire le total des médailles pour chaque année de participation.
     const data = this.olympics[0].participations.map(participation => participation.medalsCount);
 
-    this.chart = new Chart("MyChart", {
+    this.chart = new Chart("MyChartCountry", {
       type: 'line', // Vous pouvez également choisir 'bar' si vous le préférez.
       data: {
         labels,
