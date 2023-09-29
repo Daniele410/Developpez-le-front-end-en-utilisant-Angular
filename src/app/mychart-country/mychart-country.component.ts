@@ -43,7 +43,7 @@ export class MychartCountryComponent implements OnInit {
           label: "Nombre de médailles",
           data,
           fill: false,
-          borderColor: 'rgb(75, 192, 192)',
+          borderColor: 'red',
           tension: 0.1
         }]
       },
