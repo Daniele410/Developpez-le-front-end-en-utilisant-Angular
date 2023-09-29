@@ -16,7 +16,7 @@
     
 
     constructor(private olympicService: OlympicService, private router: Router ) { }
-    public olympics: Olympic[]=[];
+    public olympics!: Olympic[];
     public chart: any;
     
     
@@ -64,16 +64,16 @@
 
     ngOnInit() {
 
-
+      
       this.olympicService.getOlympics().subscribe(response => {
-
-        console.log(response)
-        this.olympics = response;
-
-        this.createChart();
-
-
-      })
+        if(Array.isArray(response)){
+          this.olympics = response;
+          this.createChart();
+          }
+        
+          
+      
+      });
 
 
     }

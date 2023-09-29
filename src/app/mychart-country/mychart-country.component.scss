@@ -22,10 +22,7 @@ body {
             border-radius: 4px;
             padding: 4px;
         }
-        @media (max-width: 768px) {
-            
-                flex-direction: column;
-            }
+        
 
     }
 
@@ -50,9 +47,17 @@ body {
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    
+            
+    
     .chart-container {
-        width: 95%;
+        width: 80%;
+        max-width: 800px;
+        min-width: 300px;
+        display: flex;
+        flex-direction: column;
     }
+
 
 }

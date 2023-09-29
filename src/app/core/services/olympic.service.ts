@@ -32,10 +32,15 @@ export class OlympicService {
     return this.olympics$.asObservable();
   }
 
-  getDataForCountry(countryName: string): Observable<Olympic > {
+  getDataForCountry(countryName: string): Observable<Olympic> {
     return this.olympics$.asObservable().pipe(
       map(olympics => {
-        return olympics.find((country: Olympic) => country.country === countryName);
+       
+  
+        if (Array.isArray(olympics)) {
+          return olympics.find((country: Olympic) => country.country === countryName);
+        }
+        return null;
       })
     );
   }
