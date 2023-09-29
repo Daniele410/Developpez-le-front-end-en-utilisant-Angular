@@ -13,7 +13,7 @@ body {
         display: flex;
 
 
-        gap: 16px;
+        row-gap: 16px;
 
         p {
             display: flex;
@@ -22,7 +22,7 @@ body {
             border-radius: 4px;
             padding: 4px;
         }
-        
+
 
     }
 
@@ -48,13 +48,13 @@ body {
 }
 
 @media (max-width: 768px) {
-    
-            
-    
+
+
+
     .chart-container {
-        width: 80%;
-        max-width: 800px;
-        min-width: 300px;
+        width: 50%;
+        max-width: 500px;
+        min-width: 100px;
         display: flex;
         flex-direction: column;
     }
