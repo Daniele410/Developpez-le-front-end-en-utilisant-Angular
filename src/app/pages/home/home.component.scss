@@ -1,50 +1,47 @@
 header {
     text-align: center;
-    /* background-color: #c5ecf8; */
     margin-bottom: 20px;
-    padding: 10px;
-    img{
-        width: 100%;
-        
+    padding: 0;
+    background-color: rgb(123, 195, 229);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    
+    img {
+        width: 100%; 
+        max-width: 800px; 
+        margin: 0 auto; // Centra l'immagine se è più piccola del contenitore
+        padding: 0;
     }
+}
+
+nav {
+    margin-top: 20px;
 }
 
 a {
     margin: 0 10px;
-    color: #333;
+    color: #0e0101;
     text-decoration: none;
+    transition: color 0.2s, text-decoration 0.2s; // Rende gli effetti hover più morbidi
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &.active {
+        color: #665;
+        text-decoration: underline;
+    }
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-.active {
-    color: #665;
-    text-decoration: underline;
-}
-
-@media (min-width: 600px) and (max-width: 900px) {
+@media (min-width: 769px) { // Nota che sto usando min-width qui
     header {
         padding: 15px 20px;
-    }
 
-    a {
-        margin: 0 15px;
-        font-size: 1.1em;
-    }
-}
-
-
-@media (min-width: 900px) {
-    header {
-        padding: 20px 30px;
-
-        img{
-            width: 80%;
-            
+        img {
+            width: 50%; // Ridimensiona l'immagine su schermi più grandi
         }
-
     }
 
     a {
@@ -52,3 +49,4 @@ a:hover {
         font-size: 1.2em;
     }
 }
+
