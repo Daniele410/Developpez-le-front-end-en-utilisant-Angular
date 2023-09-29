@@ -1,19 +1,15 @@
 <body>
-    
-    <h1> {{this.countryName | uppercase}} </h1>
-<div class="details">
-    <p> Number of entries <br>{{numberOfEntries}}</p>
-    <p> Total number medals <br>{{totalMedals}}</p>
-    <p> Total number of athletes <br>{{totalAthletes}}</p>
 
-</div>
+    <h1> {{this.countryName | uppercase}} </h1>
+    <div class="details">
+        <p> Number of entries <br>{{numberOfEntries}}</p>
+        <p> Total number medals <br>{{totalMedals}}</p>
+        <p> Total number of athletes <br>{{totalAthletes}}</p>
+
+    </div>
 
     <div class="chart-container">
         <canvas id="MyChartCountry">{{ chart }}</canvas>
     </div>
     <p>Dates</p>
 </body>
-
-
-
- 

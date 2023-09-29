@@ -39,15 +39,21 @@ export class MychartComponent implements OnInit {
           {
             label: "Medal Count",
             data,
+            
             /* backgroundColor: ['Green', 'Red', 'Orange', 'Yellow', 'Blue'], */
           },
+         
+           
+      
 
         ]
       },
       options: {
+        
 
         responsive: true,
         maintainAspectRatio: false,
+        
 
         onClick: (event: ChartEvent, elements: any[]) => {
           if (elements.length > 0) {
