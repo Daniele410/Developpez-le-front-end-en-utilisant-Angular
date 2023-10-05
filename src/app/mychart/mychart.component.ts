@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OlympicService } from '../core/services/olympic.service';
 import { Olympic } from '../core/models/Olympic';
-import Chart, { ChartEvent } from 'chart.js/auto';
+import Chart, { ActiveElement, ChartEvent } from 'chart.js/auto';
 import { Router } from '@angular/router';
 
 
@@ -13,13 +13,9 @@ import { Router } from '@angular/router';
 export class MychartComponent implements OnInit {
 
 
-
-
   constructor(private olympicService: OlympicService, private router: Router) { }
   public olympics!: Olympic[];
-  public chart: any;
-
-
+  public chart!: Chart<'pie'>;
 
 
   createChart() {
@@ -39,23 +35,17 @@ export class MychartComponent implements OnInit {
           {
             label: "Medal Count",
             data,
-            
+
             /* backgroundColor: ['Green', 'Red', 'Orange', 'Yellow', 'Blue'], */
           },
-         
-           
-      
 
         ]
       },
       options: {
-        
-
         responsive: true,
         maintainAspectRatio: false,
-        
 
-        onClick: (event: ChartEvent, elements: any[]) => {
+        onClick: (event: ChartEvent, elements: ActiveElement[]) => {
           if (elements.length > 0) {
             const clickedElementIndex = elements[0].index;
             const clickedLabel = labels[clickedElementIndex];
@@ -63,13 +53,10 @@ export class MychartComponent implements OnInit {
           }
         }
       }
-
     });
   }
 
-
   ngOnInit() {
-
 
     this.olympicService.getOlympics().subscribe(response => {
       if (Array.isArray(response)) {
@@ -77,13 +64,6 @@ export class MychartComponent implements OnInit {
         this.createChart();
       }
 
-
-
     });
-
-
   }
-
-
-
 }

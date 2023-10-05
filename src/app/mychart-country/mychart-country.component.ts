@@ -12,7 +12,7 @@ import { OlympicService } from '../core/services/olympic.service';
 export class MychartCountryComponent implements OnInit {
   countryName!: string;
   public olympics!: Olympic[];
-  public chart: any;
+  public chart!: Chart<'line', number[], string>;
 
   numberOfEntries: number = 0;
   totalMedals: number = 0;
