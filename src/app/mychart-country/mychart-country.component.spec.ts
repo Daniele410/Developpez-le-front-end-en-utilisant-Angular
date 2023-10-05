@@ -8,9 +8,9 @@ describe('MychartCountryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MychartCountryComponent ]
+      declarations: [MychartCountryComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(MychartCountryComponent);
     component = fixture.componentInstance;

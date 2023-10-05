@@ -12,13 +12,11 @@ import { OlympicService } from '../core/services/olympic.service';
 export class MychartCountryComponent implements OnInit {
   countryName!: string;
   public olympics!: Olympic[];
-  public chart!: Chart<'line', number[], string>;
+  public chart!: Chart<'line'>;
 
   numberOfEntries: number = 0;
   totalMedals: number = 0;
   totalAthletes: number = 0;
-
-
 
 
   constructor(private olympicService: OlympicService, private route: ActivatedRoute) {
@@ -58,8 +56,6 @@ export class MychartCountryComponent implements OnInit {
       }
     });
   }
-
-
 
 
   ngOnInit(): void {
