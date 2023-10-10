@@ -30,3 +30,6 @@ The dashboard has the following features:
 
 - Display of medals by country
 - Viewing a specific country to view its statistics
+
+## Link of the site in operation
+`https://olympic-games-starter.vercel.app/`
